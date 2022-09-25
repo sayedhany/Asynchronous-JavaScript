@@ -140,43 +140,43 @@ function renderCountry(data, className = '') {
 //   })
 //   .then(() => console.log('waited 1 seconds'));
 
-// const whereAmI = async function (country) {
-//   const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
-//   console.log(res);
-//   const data = await res.json();
-//   renderCountry(data[0]);
+const whereAmI = async function (country) {
+  const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+  console.log(res);
+  const data = await res.json();
+  renderCountry(data[0]);
 
-//   const neighbour = data[0].borders[2];
-//   const res1 = await fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
-//   console.log(res1);
-//   const res2 = await res1.json();
-//   renderCountry(res2[0], 'neighbour');
+  const neighbour = data[0].borders[2];
+  const res1 = await fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
+  console.log(res1);
+  const res2 = await res1.json();
+  renderCountry(res2[0], 'neighbour');
+};
+
+btn.addEventListener('click', function () {
+  whereAmI('egypt');
+});
+// const getJSON = function (url, errorMsg = `Something went wrong`) {
+//   return fetch(url).then(response => {
+//     if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+//     return response.json();
+//   });
 // };
 
-// btn.addEventListener('click', function () {
-//   whereAmI('egypt');
-// });
-const getJSON = function (url, errorMsg = `Something went wrong`) {
-  return fetch(url).then(response => {
-    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
-    return response.json();
-  });
-};
-
-const get3Countries = async function (c1, c2, c3) {
-  try {
-    // const [data1] = await ;
-    // const [data2] = await getJSON(`https://restcountries.com/v3.1/name/${c2}`);
-    // const [data3] = await getJSON(`https://restcountries.com/v3.1/name/${c3}`);
-    const prom = await Promise.all([
-      getJSON(`https://restcountries.com/v3.1/name/${c1}`),
-      getJSON(`https://restcountries.com/v3.1/name/${c2}`),
-      getJSON(`https://restcountries.com/v3.1/name/${c3}`),
-    ]);
-    console.log(...prom);
-    // console.log([...data1.capital, ...data2.capital, ...data3.capital]);
-  } catch (err) {
-    console.log(err);
-  }
-};
-get3Countries('egypt', 'israel', `israel`);
+// const get3Countries = async function (c1, c2, c3) {
+//   try {
+//     // const [data1] = await ;
+//     // const [data2] = await getJSON(`https://restcountries.com/v3.1/name/${c2}`);
+//     // const [data3] = await getJSON(`https://restcountries.com/v3.1/name/${c3}`);
+//     const prom = await Promise.all([
+//       getJSON(`https://restcountries.com/v3.1/name/${c1}`),
+//       getJSON(`https://restcountries.com/v3.1/name/${c2}`),
+//       getJSON(`https://restcountries.com/v3.1/name/${c3}`),
+//     ]);
+//     console.log(...prom);
+//     // console.log([...data1.capital, ...data2.capital, ...data3.capital]);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+// get3Countries('egypt', 'israel', `israel`);
